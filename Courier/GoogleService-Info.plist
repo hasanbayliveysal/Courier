@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>747230940851-g9b0amrhplh4hrhhpojiji4qk8g8q8pf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.747230940851-g9b0amrhplh4hrhhpojiji4qk8g8q8pf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC-wWn5gOqfR50uNNOfl1HdWofCtiiZLVQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>747230940851</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Veysal.Courier</string>
+	<key>PROJECT_ID</key>
+	<string>courier-2ffcc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>courier-2ffcc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:747230940851:ios:aa626d09a7b30cc20b6ac6</string>
+</dict>
+</plist>
