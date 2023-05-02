@@ -12,6 +12,7 @@ public protocol RouterProtocol {
     func welcomeVC() -> UIViewController
     func signUpVC() -> UIViewController
     func verifyNumVC(num: String) -> UIViewController
+    func createPasswordVC() -> UIViewController
     
 }
 
@@ -29,4 +30,7 @@ public class Router: RouterProtocol {
         return VerifyNumVC(vm: VerifyNumVM(number: num), router: self)
     }
     
+    public func createPasswordVC() -> UIViewController {
+        return CreatePasswordVC(vm: CreatePasswordVM(), router: self)
+    }
 }

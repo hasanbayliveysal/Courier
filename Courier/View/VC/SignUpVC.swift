@@ -200,6 +200,8 @@ class SignUpVC: BaseVC<SignUpVM>{
     @objc
     func onTapSend() {
         
+       // self.navigationController?.viewControllers = [self.router.verifyNumVC(num: "+994000000")]
+
         if textField.text!.count < 9 {
            print("that is not correctttt")
         }else {
@@ -221,7 +223,7 @@ class SignUpVC: BaseVC<SignUpVM>{
                 print("that is not correct")
             }
         }
-       
+
         
     }
     

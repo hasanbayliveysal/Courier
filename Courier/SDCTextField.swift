@@ -21,8 +21,6 @@ class SDCTextField: UITextField {
     @IBInspectable var maxLength: Int = 0 // Max character length
     var valueType: ValueType = ValueType.none // Allowed characters
 
-    /************* Added new feature ***********************/
-    // Accept only given character in string, this is case sensitive
     @IBInspectable var allowedCharInString: String = ""
 
     func verifyFields(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

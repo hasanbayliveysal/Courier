@@ -41,7 +41,7 @@ class BaseVC<VM>: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-
+  
 }
 
 

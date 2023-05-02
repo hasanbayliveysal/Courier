@@ -9,20 +9,28 @@ import Foundation
 import Promises
 import FirebaseAuth
 
+extension CustomError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .someError:
+            return NSLocalizedString("A user-friendly description of the error.", comment: "My error")
+        }
+    }
+}
+
+
 protocol AuthServiceProtocol {
     func signUp(with number: String) -> Promise<Result<Void,Error>>
     func verifyCode(with smsCode: String) -> Promise<Result<Void,Error>>
 }
 
-enum customError : Error {
+enum CustomError : Error {
     case someError
 }
 
 class AuthService: AuthServiceProtocol {
     
     private let auth = Auth.auth()
-    private var verificationID : String?
-    
     func signUp(with number: String) -> Promises.Promise<Result<Void, Error>> {
         //
         
@@ -33,18 +41,21 @@ class AuthService: AuthServiceProtocol {
                 promise.fulfill(.failure(error!))
                 return
             }
+            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
             promise.fulfill(.success(()))
-            self.verificationID = verificationID
+            
         }
         return promise
     }
     
     func verifyCode(with smsCode: String) -> Promises.Promise<Result<Void, Error>> {
         let promise = Promise<Result<Void,Error>>.pending()
-        guard let verificationID = self.verificationID else {
-            promise.fulfill(.failure(customError.someError))
+        
+        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else {
+            promise.fulfill(.failure(CustomError.someError))
             return promise
         }
+        
         let credentials = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationID,
             verificationCode: smsCode)

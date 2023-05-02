@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D19456842A01558100A046A2 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19456832A01558000A046A2 /* OTPTextField.swift */; };
+		D19456862A01B90000A046A2 /* CreatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19456852A01B90000A046A2 /* CreatePasswordVC.swift */; };
+		D19456882A01B92B00A046A2 /* CreatePasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19456872A01B92B00A046A2 /* CreatePasswordVM.swift */; };
 		D1A58A4F29FEE81E00BE9C78 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1A58A4E29FEE81E00BE9C78 /* Launch Screen.storyboard */; };
 		D1A58A5329FEEC8100BE9C78 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A5229FEEC8100BE9C78 /* Router.swift */; };
 		D1A58A5729FEEEC000BE9C78 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A5629FEEEC000BE9C78 /* BaseVC.swift */; };
@@ -15,7 +18,7 @@
 		D1A58A6529FF081500BE9C78 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A6429FF081500BE9C78 /* SignUpVC.swift */; };
 		D1A58A6729FF082900BE9C78 /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A6629FF082900BE9C78 /* SignUpVM.swift */; };
 		D1A58A6A29FF089C00BE9C78 /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = D1A58A6929FF089C00BE9C78 /* Promises */; };
-		D1A58A6C29FF3BB900BE9C78 /* SCDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A6B29FF3BB900BE9C78 /* SCDTextField.swift */; };
+		D1A58A6C29FF3BB900BE9C78 /* SDCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A6B29FF3BB900BE9C78 /* SDCTextField.swift */; };
 		D1A58A6E2A0001B700BE9C78 /* VerifyNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A6D2A0001B700BE9C78 /* VerifyNumVC.swift */; };
 		D1A58A702A0001D300BE9C78 /* VerifyNumVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A6F2A0001D300BE9C78 /* VerifyNumVM.swift */; };
 		D1A58A732A00083D00BE9C78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D1A58A722A00083D00BE9C78 /* FirebaseAuth */; };
@@ -30,13 +33,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D19456832A01558000A046A2 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
+		D19456852A01B90000A046A2 /* CreatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordVC.swift; sourceTree = "<group>"; };
+		D19456872A01B92B00A046A2 /* CreatePasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordVM.swift; sourceTree = "<group>"; };
 		D1A58A4E29FEE81E00BE9C78 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D1A58A5229FEEC8100BE9C78 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D1A58A5629FEEEC000BE9C78 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		D1A58A5829FEEFD400BE9C78 /* WelcomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVM.swift; sourceTree = "<group>"; };
 		D1A58A6429FF081500BE9C78 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		D1A58A6629FF082900BE9C78 /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
-		D1A58A6B29FF3BB900BE9C78 /* SCDTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDTextField.swift; sourceTree = "<group>"; };
+		D1A58A6B29FF3BB900BE9C78 /* SDCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCTextField.swift; sourceTree = "<group>"; };
 		D1A58A6D2A0001B700BE9C78 /* VerifyNumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumVC.swift; sourceTree = "<group>"; };
 		D1A58A6F2A0001D300BE9C78 /* VerifyNumVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumVM.swift; sourceTree = "<group>"; };
 		D1A58A782A00091700BE9C78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 				D1B3A90829FED80700A0F61A /* WelcomeVC.swift */,
 				D1A58A6429FF081500BE9C78 /* SignUpVC.swift */,
 				D1A58A6D2A0001B700BE9C78 /* VerifyNumVC.swift */,
+				D19456852A01B90000A046A2 /* CreatePasswordVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 				D1A58A5829FEEFD400BE9C78 /* WelcomeVM.swift */,
 				D1A58A6629FF082900BE9C78 /* SignUpVM.swift */,
 				D1A58A6F2A0001D300BE9C78 /* VerifyNumVM.swift */,
+				D19456872A01B92B00A046A2 /* CreatePasswordVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -146,7 +154,8 @@
 				D1B3A91529FED80900A0F61A /* Info.plist */,
 				D1B3A90D29FED80700A0F61A /* Courier.xcdatamodeld */,
 				D1A58A4E29FEE81E00BE9C78 /* Launch Screen.storyboard */,
-				D1A58A6B29FF3BB900BE9C78 /* SCDTextField.swift */,
+				D1A58A6B29FF3BB900BE9C78 /* SDCTextField.swift */,
+				D19456832A01558000A046A2 /* OTPTextField.swift */,
 				D1A58A782A00091700BE9C78 /* GoogleService-Info.plist */,
 			);
 			path = Courier;
@@ -235,14 +244,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D19456842A01558100A046A2 /* OTPTextField.swift in Sources */,
 				D1A58A6E2A0001B700BE9C78 /* VerifyNumVC.swift in Sources */,
 				D1A58A6529FF081500BE9C78 /* SignUpVC.swift in Sources */,
+				D19456862A01B90000A046A2 /* CreatePasswordVC.swift in Sources */,
+				D19456882A01B92B00A046A2 /* CreatePasswordVM.swift in Sources */,
 				D1A58A5329FEEC8100BE9C78 /* Router.swift in Sources */,
 				D1A58A7C2A000AB200BE9C78 /* AuthService.swift in Sources */,
 				D1A58A6729FF082900BE9C78 /* SignUpVM.swift in Sources */,
 				D1A58A702A0001D300BE9C78 /* VerifyNumVM.swift in Sources */,
 				D1A58A5929FEEFD400BE9C78 /* WelcomeVM.swift in Sources */,
-				D1A58A6C29FF3BB900BE9C78 /* SCDTextField.swift in Sources */,
+				D1A58A6C29FF3BB900BE9C78 /* SDCTextField.swift in Sources */,
 				D1B3A90929FED80700A0F61A /* WelcomeVC.swift in Sources */,
 				D1B3A90F29FED80700A0F61A /* Courier.xcdatamodeld in Sources */,
 				D1B3A90529FED80700A0F61A /* AppDelegate.swift in Sources */,
