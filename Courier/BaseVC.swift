@@ -21,13 +21,16 @@ class BaseVC<VM>: UIViewController {
       
         width = view.frame.size.width
         height = view.frame.size.height
+        // Set the background color of the navigation bar to red
+       
+
+
+       
         
         self.navigationController?.navigationBar.titleTextAttributes = [
-            .font : UIFont.systemFont(ofSize: 24, weight: .medium),
+            .font : UIFont.systemFont(ofSize: height/33.8, weight: .medium),
             .foregroundColor : UIColor(red: 0.875, green: 0.365, blue: 0.227, alpha: 1)
         ]
-        
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
 
     }
     
@@ -41,6 +44,14 @@ class BaseVC<VM>: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
+    public func makeAlertForWrongCode(with message: String) {
+        let alert = UIAlertController(title: nil, message: message , preferredStyle: .alert)
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
+            alert.dismiss(animated: true)
+        })
+    }
   
 }
 

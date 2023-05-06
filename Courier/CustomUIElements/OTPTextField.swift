@@ -56,19 +56,12 @@ enum BackgroudTypes {
             return true
         case .diamond :
             addDiamond()
-            
             return true
         case .underlined :
             addBottomView()
             textColor = .darkGray
             return true
         }
-        
- 
-        
-        
-       
-        // return true
     }
     
     fileprivate func addDiamond() {

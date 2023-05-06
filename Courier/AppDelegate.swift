@@ -21,14 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 2.0)
-        let router = Router()
-        let vc = UINavigationController(rootViewController: router.welcomeVC())
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = vc
-        self.window?.makeKeyAndVisible()
-      
         FirebaseApp.configure()
-        
+        let router = Router()
+        if Auth.auth().currentUser == nil {
+            let navVC = UINavigationController(rootViewController: router.welcomeVC())
+            self.window?.rootViewController = navVC
+        } else {
+            let navVC =  UINavigationController(rootViewController:  router.welcomeVC())
+            self.window?.rootViewController = navVC
+        }
+      
+        self.window?.makeKeyAndVisible()
         return true
     }
     

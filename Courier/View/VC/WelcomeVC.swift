@@ -13,7 +13,15 @@ class WelcomeVC: BaseVC<WelcomeVM> {
     
     //MARK: -- VARIABLES
     
-    
+    private lazy var infView: InformationView = {
+        var view  = InformationView()
+        view.firstLabelText = "Welcome to Courier!"
+        view.secondLabelText = "Sign up and start to delivery your \nluggage! "
+        view.height = height
+        view.width = width
+        self.view.addSubview(view)
+        return view
+    }()
    
     
     private lazy var logoLabel: UILabel = {
@@ -25,27 +33,7 @@ class WelcomeVC: BaseVC<WelcomeVM> {
         return label
     }()
     
-    private lazy var welcomeLabel: UILabel = {
-        var label = UILabel()
-        view.addSubview(label)
-        label.text = "Welcome to Courier Delivery!"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        return label
-    }()
-
-    private lazy var informationLabel: UILabel = {
-        var label = UILabel()
-        view.addSubview(label)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.alpha = 0.3
-        label.text = "Sign up and get start delivery your \nluggage!"
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        return label
-    }()
-    
+   
     private lazy var signInBtn: UIButton = {
         let button = UIButton()
         view.addSubview(button)
@@ -96,7 +84,6 @@ class WelcomeVC: BaseVC<WelcomeVM> {
         view.backgroundColor = .white
         setup()
         addGestureRecognizer()
-   
 
     }
 
@@ -107,17 +94,15 @@ class WelcomeVC: BaseVC<WelcomeVM> {
             make.centerX.equalToSuperview()
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
         }
-        welcomeLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(logoLabel.snp.bottom).offset(height/10.15)
+        infView.snp.makeConstraints { make in
+            make.width.equalTo(width)
+            make.height.equalTo(height/8.93)
+            make.top.equalTo(self.logoLabel.snp.bottom).offset(height/10.15)
         }
-        informationLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(welcomeLabel.snp.bottom).offset(height/33.8)
-        }
+
         signInBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(informationLabel.snp.bottom).offset(height/16.9)
+            make.top.equalTo(infView.snp.bottom).offset(height/16.9)
             make.left.equalTo(view.snp.left).offset(16)
             make.right.equalTo(view.snp.right).offset(-16)
             make.height.equalTo(width/6.8)
