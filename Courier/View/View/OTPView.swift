@@ -8,12 +8,14 @@
 import UIKit
 
 class OTPView: UIView {
-    
+    var timerCounting:Bool = true
     var mainWidth : CGFloat?
     var mainHeight : CGFloat?
     var num = UserDefaults.standard.value(forKey: "number") as! String
     var otpForVerifyPassword = false
     var otpForForgotPassword = false
+    let userDefaults = UserDefaults.standard
+    let COUNTING_KEY = "countingKey"
 
     // MARK: -- VARIABLES
     
@@ -25,8 +27,8 @@ class OTPView: UIView {
     let t6 = OTPTextField()
 
     private var remainingStrStack: [String] = []
-    private var timer: Timer = Timer()
-    private var timerCount : Int = 120
+    var timer: Timer = Timer()
+    var timerCount : Int = 119
     private var textFields = [OTPTextField]()
     private var isTyping = true
     
@@ -53,13 +55,28 @@ class OTPView: UIView {
 
     // MARK: -- FUNCTIONS
     override func draw(_ rect: CGRect) {
+        timerCounting = userDefaults.bool(forKey: COUNTING_KEY)
         super.draw(rect)
         textFields = [t1,t2,t3,t4,t5,t6]
         createTextField()
         t1.becomeFirstResponder()
-        createTimer()
+        print(timerCounting)
+        if timerCounting {
+            createTimer()
+            setTimerCounting(false)
+        }
+       
         setup()
     }
+    
+   
+    
+    func setTimerCounting(_ val: Bool)
+    {
+        timerCounting = val
+        userDefaults.set(timerCounting, forKey: COUNTING_KEY)
+    }
+
     
     func createTextField() {
 
@@ -187,8 +204,9 @@ class OTPView: UIView {
         let timeString = makeStringFromInt(minutes: time.0, seconds: time.1)
         timerLabel.text = timeString
         if timerCount == 0 {
+          
             timer.invalidate()
-            timerCount = 120
+            timerCount = 119
             timerLabel.removeFromSuperview()
             sendCodeButton.removeFromSuperview()
             addSubview(sendCodeButton)
@@ -210,22 +228,6 @@ class OTPView: UIView {
     
     @objc func onTapLabel() {
         clearAllTextField()
-//        if otpForVerifyPassword {
-//            print(num)
-//            VerifyNumVM(number: num).issignUp(with: num).then { result in
-//                    switch result {
-//                    case .success():
-//                        print("code sended again")
-//                    case .failure(let err):
-//                        print(err.localizedDescription)
-//                    }
-//                }
-//        }
-//      
-//        if otpForForgotPassword {
-//            
-//        }
-        
         sendCodeButton.isEnabled = false
         sendCodeButton.setAttributedTitle(NSAttributedString(string: "Send code again", attributes: [.font : UIFont.systemFont(ofSize: 12, weight: .medium)]), for: .normal)
         sendCodeButton.removeFromSuperview()

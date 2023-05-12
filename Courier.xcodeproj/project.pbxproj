@@ -136,6 +136,7 @@
 				D1A58A6D2A0001B700BE9C78 /* VerifyNumVC.swift */,
 				D19456852A01B90000A046A2 /* CreatePasswordVC.swift */,
 				D1CA64FA2A061C3F00A9B6CB /* SignInVC.swift */,
+				D1CA65212A06AC6100A9B6CB /* ForgotPasswordVC.swift */,
 				D1CA65232A06AC8000A9B6CB /* SetNewPasswordVC.swift */,
 				D1CA65102A0691E500A9B6CB /* DeliveriesVC.swift */,
 				D1CA650E2A06913600A9B6CB /* TabBar.swift */,
@@ -143,7 +144,6 @@
 				D1CA65142A06A4C800A9B6CB /* AddressesVC.swift */,
 				D1CA65162A06A4DD00A9B6CB /* NotificationsVC.swift */,
 				D1CA65182A06A4EE00A9B6CB /* MoreVC.swift */,
-				D1CA65212A06AC6100A9B6CB /* ForgotPasswordVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";

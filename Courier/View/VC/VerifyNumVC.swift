@@ -24,6 +24,8 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
    
     private lazy var otpView: OTPView = {
        let view = OTPView()
+    
+        view.setTimerCounting(vm.userDef)
         view.mainWidth = width
         view.mainHeight = height
         view.sendCodeButton.addTarget(self, action: #selector(onTapSendCodeAgain), for: .allTouchEvents)
@@ -35,6 +37,9 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
     //MARK: -- FUNCTIONS
 
     override func viewDidLoad() {
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        nc.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         super.viewDidLoad()
         self.title = "Courier"
         view.backgroundColor = .white
@@ -43,6 +48,16 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "❮", style: .plain, target: self, action: #selector(onTapBack))
         
     }
+    
+    @objc func appMovedToBackground() {
+        print("background")
+    }
+    
+
+    @objc func appMovedToForeground() {
+        print("Foreground")
+    }
+
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +87,13 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
             switch result {
             case .success():
                 DispatchQueue.main.async {
-                    self.navigationController?.viewControllers = [self.router.createPasswordVC()]
+                    if self.vm.forSignIn {
+                        self.navigationController?.viewControllers = [TabBar()]
+                    }else if self.vm.forNewPassword{
+                        self.navigationController?.viewControllers = [self.router.setnewPasswordVC()]
+                    }else {
+                        self.navigationController?.viewControllers = [self.router.createPasswordVC()]
+                    }
                 }
             case .failure(let err):
                 self.otpView.clearAllTextField()
@@ -97,12 +118,9 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
     
     @objc func onTapSendCodeAgain() {
         vm.issignUp(with: vm.number).then { result in
-            self.otpView.removeFromSuperview()
             switch result {
             case .success():
-                DispatchQueue.main.async {
-                    self.navigationController?.viewControllers = [self.router.verifyNumVC(num: self.vm.number)]
-                }
+                self.makeAlertForWrongCode(with: "Code Sended Again")
                 print("succses")
             case .failure(let err):
                 self.makeAlertForWrongCode(with: err.localizedDescription)

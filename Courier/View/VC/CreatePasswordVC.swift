@@ -28,7 +28,9 @@ class CreatePasswordVC: BaseVC<CreatePasswordVM> {
     }()
     
     private lazy var createPasswordView: PasswordView = {
-        let view = PasswordView(height: height, width: width)
+        let view = PasswordView()
+        view.width = width
+        view.height = height
         view.tfPlaceHolder = "Password"
         view.tf.addTarget(self, action: #selector(onTapFirstView), for: .allTouchEvents)
         view.forCreatePassword = true
@@ -36,7 +38,9 @@ class CreatePasswordVC: BaseVC<CreatePasswordVM> {
     }()
     
     private lazy var passwordAgainView: PasswordView = {
-        let view = PasswordView(height: height, width: width)
+        let view = PasswordView()
+        view.width = width
+        view.height = height
         view.tfPlaceHolder = "Password again"
         view.tf.addTarget(self, action: #selector(onTapSecondView), for: .allTouchEvents)
         view.forCreatePassword = false
@@ -150,6 +154,11 @@ class CreatePasswordVC: BaseVC<CreatePasswordVM> {
         termsAndConditionLabel.isUserInteractionEnabled = true
         termsAndConditionLabel.addGestureRecognizer(gestureRecForTermsAndConditions)
         
+        let gestureForSignIn = UITapGestureRecognizer(target: self, action: #selector(onTapCheckBox))
+        gestureForSignIn.name = "signin"
+        signInLabel.isUserInteractionEnabled = true
+        signInLabel.addGestureRecognizer(gestureForSignIn)
+        
     }
     
    
@@ -252,6 +261,8 @@ class CreatePasswordVC: BaseVC<CreatePasswordVM> {
             vc.modalPresentationStyle = .pageSheet
             self.present(vc, animated: true)
      
+        case "signin":
+            navigationController?.viewControllers = [router.signInVC(afterSetPassword: false)]
         default:
             break
         }
@@ -268,17 +279,20 @@ class CreatePasswordVC: BaseVC<CreatePasswordVM> {
                     infoLabel.textColor = .systemGreen
                 }else {
                     infoLabel.alpha = 0.6
+                    passwordIsOK = false
                     infoLabel.text = "* Password must be 6 or more characters"
                     infoLabel.textColor = .black
                 }
         } else {
             
             if createPasswordView.tf.text!.count < 6  {
+                passwordIsOK = false
                 infoLabel.alpha = 0.6
                 infoLabel.text = "* Password must be 6 or more characters"
                 infoLabel.textColor = .black
             }else {
                 infoLabel.alpha = 1
+                passwordIsOK = false
                 infoLabel.text = "Passwords are not same"
                 infoLabel.textColor = .red
             }
@@ -316,14 +330,14 @@ class CreatePasswordVC: BaseVC<CreatePasswordVM> {
     @objc func keyboardWillHide(_ notification : NSNotification){
         timer?.invalidate()
         if selectedIsFirst {
-            if createPasswordView.tf.text == "" {
+        
                 createPasswordView.keyboardWillHide()
-            }
+        
            
         } else {
-            if passwordAgainView.tf.text == "" {
+           
                 passwordAgainView.keyboardWillHide()
-            }
+            
         }
         moveViewWithKeyboard(notification: notification, keyboardWillShow: false)
     }
@@ -338,7 +352,7 @@ class CreatePasswordVC: BaseVC<CreatePasswordVM> {
             vm.saveUser(with: model).then { result in
                 switch result {
                 case .success():
-                    self.navigationController?.viewControllers = [self.router.signInVC()]
+                    self.navigationController?.viewControllers = [self.router.signInVC(afterSetPassword: true)]
                 case .failure(let err):
                     self.makeAlertForWrongCode(with: err.localizedDescription)
                 }

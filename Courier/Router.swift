@@ -11,9 +11,9 @@ public protocol RouterProtocol {
     
     func welcomeVC() -> UIViewController
     func signUpVC() -> UIViewController
-    func verifyNumVC(num: String) -> UIViewController
+    func verifyNumVC(num: String, userDef: Bool,_ forSignIn: Bool,_ forNewPassword:Bool) -> UIViewController
     func createPasswordVC() -> UIViewController
-    func signInVC() -> UIViewController
+    func signInVC(afterSetPassword: Bool) -> UIViewController
     func deliveriesVC() -> UIViewController
     func addressesVC() -> UIViewController
     func notificationsVC() -> UIViewController
@@ -34,15 +34,15 @@ public class Router: RouterProtocol {
         return SignUpVC(vm: SignUpVM(), router: self)
     }
     
-    public func verifyNumVC(num: String) -> UIViewController {
-        return VerifyNumVC(vm: VerifyNumVM(number: num), router: self)
+    public func verifyNumVC(num: String, userDef: Bool, _ forSignIn: Bool,_ forNewPassword:Bool) -> UIViewController {
+        return VerifyNumVC(vm: VerifyNumVM(number: num, userDef: userDef, forSignIn: forSignIn,forNewPassword:forNewPassword), router: self)
     }
     
     public func createPasswordVC() -> UIViewController {
         return CreatePasswordVC(vm: CreatePasswordVM(), router: self)
     }
-    public func signInVC() -> UIViewController {
-        return SignInVC(vm: SignInVM(), router: self)
+    public func signInVC(afterSetPassword: Bool) -> UIViewController {
+        return SignInVC(vm: SignInVM(afterSetPassword: afterSetPassword), router: self)
     }
     public func deliveriesVC() -> UIViewController {
         return DeliveriesVC(vm: DeliveriesVM(), router: self)

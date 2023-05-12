@@ -9,6 +9,11 @@ import Promises
 
 class SignInVM {
     let service = DatabaseService()
+    var afterSetPassword: Bool
+    
+    init(afterSetPassword: Bool) {
+        self.afterSetPassword = afterSetPassword
+    }
     
     func getUserInfo()  -> Promise<Result<[UserModel],Error>> {
         let promise = Promise<Result<[UserModel],Error>>.pending()

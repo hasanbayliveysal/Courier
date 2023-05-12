@@ -13,7 +13,19 @@ class EnterPhoneNumberView: UIView {
     var mainWidth : CGFloat?
     var mainHeight : CGFloat?
     
+    init(mainWidth: CGFloat, mainHeight: CGFloat) {
 
+        self.mainWidth = mainWidth
+        self.mainHeight = mainHeight
+        
+        super.init(frame: CGRect.zero)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private lazy var mainView: UIView = {
         let view = UIView()
         addSubview(view)
@@ -51,7 +63,7 @@ class EnterPhoneNumberView: UIView {
     lazy var phoneTextField : SDCTextField = {
         let textField = SDCTextField()
         mainView.addSubview(textField)
-        textField.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolder ?? "", attributes:[
+        textField.attributedPlaceholder = NSAttributedString(string:  "Phone number", attributes:[
             .foregroundColor: UIColor.systemGray,
             .font: UIFont.systemFont(ofSize: 16, weight: .regular),
         ]
@@ -108,12 +120,14 @@ class EnterPhoneNumberView: UIView {
             make.right.equalTo(snp.right).offset(-16)
             make.height.equalTo(frame.size.width/6.8)
         }
-        phoneTextField.placeholder = "Phone number"
-            mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-            phoneNumLabel.removeFromSuperview()
+       
+      
         if phoneTextField.text == "" {
             sendCodeBtn.isEnabled = false
             sendCodeBtn.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+            phoneTextField.placeholder = "Phone number"
+                mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+                phoneNumLabel.removeFromSuperview()
         }
     }
   

@@ -41,6 +41,7 @@ class WelcomeVC: BaseVC<WelcomeVM> {
         button.setTitle("Sign In", for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 4
+        button.addTarget(self, action: #selector(onTapSignIn), for: .touchUpInside)
         return button
     }()
     
@@ -143,4 +144,9 @@ class WelcomeVC: BaseVC<WelcomeVM> {
     func onTapSignUp() {
         navigationController?.viewControllers = [router.signUpVC()]
     }
+    
+    @objc func onTapSignIn() {
+        navigationController?.viewControllers = [router.signInVC(afterSetPassword: false)]
+    }
+    
 }

@@ -22,10 +22,8 @@ class SignUpVC: BaseVC<SignUpVM>{
     }()
     
     private lazy var phoneNumView: EnterPhoneNumberView = {
-        var view  = EnterPhoneNumberView()
+        var view  = EnterPhoneNumberView(mainWidth: width, mainHeight: height)
         view.textFieldPlaceHolder = "Phone number"
-        view.mainHeight = height
-        view.mainWidth = width
         view.sendCodeBtn.addTarget(self, action: #selector(onTapSend), for: .touchUpInside)
         self.view.addSubview(view)
         return view
@@ -46,8 +44,7 @@ class SignUpVC: BaseVC<SignUpVM>{
         
         setup()
         createGesture()
-        
-       // timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(onChange), userInfo: nil, repeats: true)
+      
     }
     
     func createGesture() {
@@ -55,25 +52,12 @@ class SignUpVC: BaseVC<SignUpVM>{
         view.isUserInteractionEnabled = true
        view.addGestureRecognizer(gestureRecognizer)
     }
-    
-//    @objc func onChange() {
-//        print(checkHaveAnAccount())
-//
-//    }
-    //
-//    func checkHaveAnAccount() -> Bool {
-//        var yes = false
-//
-//        return yes
-//
-//    }
 
     
     @objc func onTapView(){
         view.endEditing(true)
-        if phoneNumView.phoneTextField.text == "" {
-            phoneNumView.forKeyboardWillHide()
-        }
+        phoneNumView.forKeyboardWillHide()
+        
        
     }
     
@@ -81,53 +65,56 @@ class SignUpVC: BaseVC<SignUpVM>{
         phoneNumView.forKeyboardWillShow()
     }
     
+    func signUp() {
+          if phoneNumView.phoneTextField.text!.count < 9 {
+              self.makeAlertForWrongCode(with: "Please input a valid phone number")
+          }else {
+              if phoneNumView.checkIsNum(phoneNumView.phoneTextField.text!) {
+                  if let text = phoneNumView.phoneTextField.text, !text.isEmpty{
+                      print("burada")
+                      self.onTapView()
+                      UserDefaults.standard.set("+994\(text)", forKey: "number")
+                      vm.issignUp(with: "+994\(text)").then { result in
+                          switch result {
+                          case .success() :
+                              DispatchQueue.main.async {
+                                  self.navigationController?.viewControllers = [self.router.verifyNumVC(num: "+994\(text)",  userDef: true,false,false)]
+                              }
+                          case .failure(let err):
+                              self.makeAlertForWrongCode(with: err.localizedDescription)
+                          }
+                      }
+                  }
+              }
+          }
+    }
     
-    @objc
-    func onTapSend() {
-        var checkHaveAnAccount = false
-        let signInVM = SignInVM()
+    func checkHaveAnAccount(){
+     //   var checkHaveAnAccount = false
+        var phoneNums : [String] = []
+        let signInVM = SignInVM(afterSetPassword: false)
         let number = "+994\(phoneNumView.phoneTextField.text!)"
         signInVM.getUserInfo().then { result in
                 switch result {
                 case .success(let model):
                     for data in model {
-                        if data.phoneNum.contains(number) {
-                            checkHaveAnAccount = true
-                            print("you have an account please login")
-                        }
+                        phoneNums.append(data.phoneNum)
                        }
+                    if phoneNums.contains(number) {
+                        self.makeAlertForWrongCode(with: "You have an account")
+                    } else {
+                        self.signUp()
+                    }
+                    print(phoneNums)
                 case .failure(let err):
                     self.makeAlertForWrongCode(with: err.localizedDescription)
-                   
                 }
-              
          }
-        
-        print("burada")
-        if phoneNumView.phoneTextField.text!.count < 9 {
-            self.makeAlertForWrongCode(with: "Please input a valid phone number")
-        }else {
-            if phoneNumView.checkIsNum(phoneNumView.phoneTextField.text!) && !checkHaveAnAccount {
-                
-                if let text = phoneNumView.phoneTextField.text, !text.isEmpty{
-                    print("burada")
-                    self.onTapView()
-                    UserDefaults.standard.set("+994\(text)", forKey: "number")
-                    vm.issignUp(with: "+994\(text)").then { result in
-                        switch result {
-                        case .success() :
-                            DispatchQueue.main.async {
-                                self.navigationController?.viewControllers = [self.router.verifyNumVC(num: "+994\(text)")]
-                                
-                            }
-                        case .failure(let err):
-                            print(err.localizedDescription)
-                            
-                        }
-                    }
-                }
-            }
-        }
+    }
+    @objc
+    func onTapSend() {
+     checkHaveAnAccount()
+
     }
     func setup() {
         infView.snp.makeConstraints { make in

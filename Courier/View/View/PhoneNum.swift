@@ -80,9 +80,14 @@ class PhoneNum: UIView {
     }
     
     func forKeyboardWillHide() {
-        phoneTextField.placeholder = "Phone number"
-            mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-            phoneNumLabel.removeFromSuperview()
+        
+        
+          if phoneTextField.text == "" {
+              phoneTextField.placeholder = "Phone number"
+                  mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+                  phoneNumLabel.removeFromSuperview()
+          }
+
     }
   
     

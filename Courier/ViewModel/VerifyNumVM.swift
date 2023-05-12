@@ -11,10 +11,16 @@ import Promises
 class VerifyNumVM {
     var smsCode: String = ""
     var number: String
+    var userDef: Bool
+    var forSignIn: Bool
+    var forNewPassword: Bool
     let service = AuthService()
     
-    init(number: String) {
+    init(number: String, userDef: Bool,forSignIn: Bool,forNewPassword:Bool) {
         self.number = number
+        self.userDef = userDef
+        self.forSignIn = forSignIn
+        self.forNewPassword = forNewPassword
     }
     
     func verifyCode(with smsCode: String) -> Promise<Result<Void,Error>> {

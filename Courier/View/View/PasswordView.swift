@@ -14,21 +14,12 @@ class PasswordView: UIView {
     var iconClick = true
     var tfPlaceHolder : String?
     var forCreatePassword = true
-    
-    init(height: CGFloat? = nil, width: CGFloat? = nil) {
-        self.height = height
-        self.width = width
-        super.init(frame: CGRect.zero)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+ 
+
     private lazy var mainView: UIView = {
         let view = UIView()
         addSubview(view)
-        view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+       // view.backgroundColor = .black
         view.clipsToBounds = true
         view.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
         view.layer.borderWidth = 1
@@ -52,7 +43,7 @@ class PasswordView: UIView {
         label.text = "Password"
         label.textColor = UIColor(red: 0.875, green: 0.365, blue: 0.227, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.backgroundColor = .white
+      
         return label
     }()
     
@@ -69,6 +60,7 @@ class PasswordView: UIView {
         tf.delegate = self
         setup()
         makeGesture()
+        
     }
     
     
@@ -79,7 +71,13 @@ class PasswordView: UIView {
         tf.placeholder = ""
         tf.tintColor = UIColor(red: 0.875, green: 0.365, blue: 0.227, alpha: 1)//.cgColor
         mainView.layer.borderColor = UIColor(red: 0.875, green: 0.365, blue: 0.227, alpha: 1).cgColor
+        passWordLbl()
+    }
+    
+    func passWordLbl() {
+        passwordLabel.backgroundColor = .white
         addSubview(passwordLabel)
+        mainView.bringSubviewToFront(passwordLabel)
         passwordLabel.snp.makeConstraints { make in
             make.centerY.equalTo(mainView.snp.top)
             make.left.equalTo(mainView.snp.left).offset(width!/16)
@@ -87,15 +85,27 @@ class PasswordView: UIView {
     }
     
     func keyboardWillHide() {
+        passwordLabel.removeFromSuperview()
         if forCreatePassword {
-            tf.placeholder = "Password"
-            mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-            passwordLabel.removeFromSuperview()
+            
+            if tf.text == "" {
+                tf.placeholder = "Password"
+                mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+               
+            } else {
+               keyboardWillShow()
+            }
+           
         }
         else {
-            tf.placeholder = "Password again"
-            mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-            passwordLabel.removeFromSuperview()
+            if tf.text == "" {
+                
+                tf.placeholder = "Password again"
+                mainView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+                
+            }else {
+               keyboardWillShow()
+            }
         }
 
     }
