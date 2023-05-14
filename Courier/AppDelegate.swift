@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         let router = Router()
       //  if Auth.auth().currentUser == nil {
-        let navVC = UINavigationController(rootViewController: router.setnewPasswordVC())
+        let navVC = UINavigationController(rootViewController: router.welcomeVC())
             self.window?.rootViewController = navVC
       //  } else {
          //   let navVC =  UINavigationController(rootViewController:  router.welcomeVC())

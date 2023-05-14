@@ -71,7 +71,6 @@ class SignUpVC: BaseVC<SignUpVM>{
           }else {
               if phoneNumView.checkIsNum(phoneNumView.phoneTextField.text!) {
                   if let text = phoneNumView.phoneTextField.text, !text.isEmpty{
-                      print("burada")
                       self.onTapView()
                       UserDefaults.standard.set("+994\(text)", forKey: "number")
                       vm.issignUp(with: "+994\(text)").then { result in
@@ -105,7 +104,6 @@ class SignUpVC: BaseVC<SignUpVM>{
                     } else {
                         self.signUp()
                     }
-                    print(phoneNums)
                 case .failure(let err):
                     self.makeAlertForWrongCode(with: err.localizedDescription)
                 }

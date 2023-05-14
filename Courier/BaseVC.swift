@@ -21,16 +21,16 @@ class BaseVC<VM>: UIViewController {
       
         width = view.frame.size.width
         height = view.frame.size.height
-        // Set the background color of the navigation bar to red
-       
-
-
-       
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [
+  
+        let standardAppearance = UINavigationBarAppearance()
+           standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+           standardAppearance.configureWithOpaqueBackground()
+           standardAppearance.backgroundColor = UIColor.white
+           standardAppearance.titleTextAttributes = [
             .font : UIFont.systemFont(ofSize: height/33.8, weight: .medium),
-            .foregroundColor : UIColor(red: 0.875, green: 0.365, blue: 0.227, alpha: 1)
-        ]
+            .foregroundColor : UIColor(red: 0.875, green: 0.365, blue: 0.227, alpha: 1)]
+           self.navigationController?.navigationBar.standardAppearance = standardAppearance
+           self.navigationController?.navigationBar.scrollEdgeAppearance = standardAppearance
 
     }
     
@@ -48,9 +48,19 @@ class BaseVC<VM>: UIViewController {
     public func makeAlertForWrongCode(with message: String) {
         let alert = UIAlertController(title: nil, message: message , preferredStyle: .alert)
         self.present(alert, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now()+1.5, execute: {
             alert.dismiss(animated: true)
         })
+    }
+    
+    public func makeAlert(with message: String, viewController: UIViewController) {
+        let alert = UIAlertController(title: nil, message: message , preferredStyle: .alert)
+        let okBtn = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.navigationController?.viewControllers = [viewController]
+        }
+        alert.addAction(okBtn)
+        self.present(alert, animated: true)
+
     }
   
 }

@@ -73,7 +73,7 @@ extension ForgotPasswordVC {
   
     func sendVerificationCode(num: String) {
         let signUpVM = SignUpVM()
-      
+        self.onTapView()
         signUpVM.issignUp(with: "+994\(num)").then({ res in
                 switch res {
                 case .success():
@@ -106,20 +106,16 @@ extension ForgotPasswordVC {
     
     
     @objc func onTapSend() {
-     //  print("You are here")
         let signInVM = SignInVM(afterSetPassword: false)
         if let num = enterPhoneNumView.phoneTextField.text, enterPhoneNumView.checkIsNum(num) {
-            print(num)
+            UserDefaults.standard.set("+994\(num)", forKey: "numforchangepassword")
             var userValid : [Bool] = []
             signInVM.getUserInfo().then { res in
-                print("You are here")
                 switch res {
                 case .success(let model):
                     DispatchQueue.main.async {
                         for data in model {
-                            print("You are here\(data.phoneNum)")
                             if data.phoneNum == "+994\(num)" {
-                                print("You are here\(data.phoneNum)")
                                 userValid.append(true)
                                 break
                             }
@@ -130,9 +126,7 @@ extension ForgotPasswordVC {
                             self.makeAlertForWrongCode(with: "You don't have an account please Sign up")
                         }
                     }
-                    //
                 case .failure(let err):
-                    print("You are error")
                     self.makeAlertForWrongCode(with: err.localizedDescription)
                 }
             }

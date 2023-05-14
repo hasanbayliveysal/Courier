@@ -38,8 +38,8 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
 
     override func viewDidLoad() {
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        nc.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+//        nc.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+//        nc.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         super.viewDidLoad()
         self.title = "Courier"
         view.backgroundColor = .white
@@ -49,16 +49,16 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
         
     }
     
-    @objc func appMovedToBackground() {
-        print("background")
-    }
-    
-
-    @objc func appMovedToForeground() {
-        print("Foreground")
-    }
-
-    
+//    @objc func appMovedToBackground() {
+//        print("background")
+//    }
+//
+//
+//    @objc func appMovedToForeground() {
+//        print("Foreground")
+//    }
+//
+//
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -121,7 +121,6 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
             switch result {
             case .success():
                 self.makeAlertForWrongCode(with: "Code Sended Again")
-                print("succses")
             case .failure(let err):
                 self.makeAlertForWrongCode(with: err.localizedDescription)
                 

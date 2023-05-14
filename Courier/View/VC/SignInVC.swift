@@ -12,7 +12,7 @@ import FirebaseFirestore
 class SignInVC: BaseVC<SignInVM> {
     var isUserValid = false
     let db = Firestore.firestore()
-    var selecedIsPasswordView : Bool?
+    var selecedIsPasswordView = false
     var myViews : [AnyObject] = []
     var keyboardHeight: CGFloat?
     
@@ -206,7 +206,7 @@ extension SignInVC {
        
         moveWithKeyboard(notification: sender, keyboardWillShow: true)
         
-        if selecedIsPasswordView! {
+        if selecedIsPasswordView {
         passwordView.keyboardWillShow()
         phoneNumView.forKeyboardWillHide()
         } else {
@@ -223,10 +223,10 @@ extension SignInVC {
     @objc func keyboardWillHide(_ sender: NSNotification) {
         
          moveWithKeyboard(notification: sender, keyboardWillShow: false)
-        if !selecedIsPasswordView! {
-    
+        if !selecedIsPasswordView
+       // selecedIsPasswordView != nil && !(selecedIsPasswordView ?? false)
+        {
             passwordView.keyboardWillHide()
-        
         }else {
             phoneNumView.forKeyboardWillHide()
         
@@ -273,6 +273,7 @@ extension SignInVC {
     
     @objc func onTapSignIn() {
         let signUpVM = SignUpVM()
+        let errors = ["Password":"Check your password and try again", "Number":"You have not an account please Sign up"]
         if passwordView.tf.text != "" && phoneNumView.phoneTextField.text != "" {
             var userValidation : [Bool] = []
             vm.getUserInfo().then { result in
@@ -281,9 +282,7 @@ extension SignInVC {
                     DispatchQueue.main.async {
                         for info in data {
                             if let number = self.phoneNumView.phoneTextField.text {
-                                //   print("password \(info.phoneNum)")
                                 if info.phoneNum == "+994\(number)" && info.password == self.passwordView.tf.text {
-                                    
                                     userValidation.append(true)
                                     break
                                 }
@@ -307,7 +306,7 @@ extension SignInVC {
                                  }
                                }
                         else {
-                            self.makeAlertForWrongCode(with: "There is no user in this criterias")
+                            self.makeAlertForWrongCode(with: "Check your phone number or password and try again")
                         }
                     }
                 case .failure(let err):
