@@ -20,10 +20,25 @@ public protocol RouterProtocol {
     func moreVC() -> UIViewController
     func forgotPasswordVC() -> UIViewController
     func setnewPasswordVC() -> UIViewController
+    func productInformationVC() -> UIViewController
+    func productAddressVC() -> UIViewController
+    func confirmDeliveryVC() -> UIViewController
     
 }
 
 public class Router: RouterProtocol {
+    public func productInformationVC() -> UIViewController {
+        return ProductInformationVC(vm: ProductInformationVM(), router: self)
+    }
+    
+    public func productAddressVC() -> UIViewController {
+        return ProductAddressVC(vm: ProductAddressVM(), router: self)
+    }
+    
+    public func confirmDeliveryVC() -> UIViewController {
+        return ConfirmDeliveryVC(vm: ConfirmDeliveryVM(), router: self)
+    }
+    
    
 
     public func welcomeVC() -> UIViewController {

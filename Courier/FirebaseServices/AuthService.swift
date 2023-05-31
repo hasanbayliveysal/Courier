@@ -22,6 +22,7 @@ extension CustomError: LocalizedError {
 protocol AuthServiceProtocol {
     func signUp(with number: String) -> Promise<Result<Void,Error>>
     func verifyCode(with smsCode: String) -> Promise<Result<Void,Error>>
+    func logOut() -> Promise<Result<Void,Error>>
 }
 
 enum CustomError : Error {
@@ -29,6 +30,9 @@ enum CustomError : Error {
 }
 
 class AuthService: AuthServiceProtocol {
+    
+    
+    
     
     private let auth = Auth.auth()
     func signUp(with number: String) -> Promises.Promise<Result<Void, Error>> {
@@ -66,6 +70,19 @@ class AuthService: AuthServiceProtocol {
             }
             promise.fulfill(.success(()))
         }
+        return promise
+    }
+    
+    func logOut() -> Promises.Promise<Result<Void, Error>> {
+        let promise = Promise<Result<Void,Error>>.pending()
+        
+        do{
+            try auth.signOut()
+            promise.fulfill(.success(()))
+        } catch let error as NSError {
+            promise.fulfill(.failure(error))
+        }
+        
         return promise
     }
     

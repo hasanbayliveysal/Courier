@@ -37,13 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
         let router = Router()
-      //  if Auth.auth().currentUser == nil {
+        if Auth.auth().currentUser == nil {
         let navVC = UINavigationController(rootViewController: router.welcomeVC())
             self.window?.rootViewController = navVC
-      //  } else {
-         //   let navVC =  UINavigationController(rootViewController:  router.welcomeVC())
-          //  self.window?.rootViewController = navVC
-      //  }
+        } else {
+   
+            let navVC =  UINavigationController(rootViewController: TabBar())
+            self.window?.rootViewController = navVC
+        }
       
         self.window?.makeKeyAndVisible()
         return true

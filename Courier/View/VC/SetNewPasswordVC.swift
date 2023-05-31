@@ -73,46 +73,7 @@ class SetNewPasswordVC: BaseVC<SetNewPasswordVM> {
         createScrollView()
         setup()
     }
-    
-
-    func moveViewWithKeyboard(notification: NSNotification, keyboardWillShow: Bool) {
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-//        let keyboardHeight = keyboardSize.height
-//        if keyboardWillShow {
-//            changePasswordBtn.snp.makeConstraints { make in
-//                make.bottom.equalTo(view.snp.bottom).offset(-keyboardHeight-10)
-//            }
-//        } else {
-//
-//            for view in myViews {
-//                    view.removeFromSuperview()
-//                }
-//            setup()
-//            }
-////            for view in myViews {
-////                view.removeFromSuperview()
-////            }
-////
-//
-//
-//
-//        if keyboardWillShow {
-//            guard let userInfo = notification.userInfo else { return }
-//            var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-//            keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-//
-//            var contentInset:UIEdgeInsets = self.scrollView.contentInset
-//            contentInset.bottom = keyboardFrame.size.height
-//            scrollView.contentInset = contentInset
-//        } else {
-//            let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-//                scrollView.contentInset = contentInset
-//        }
-//
-    }
-    
- 
-    
+   
    
 }
 extension SetNewPasswordVC {
@@ -137,7 +98,6 @@ extension SetNewPasswordVC {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         scrollView.isScrollEnabled = false
-     //   contentView.backgroundColor = .cyan
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(view.snp.top).offset(height/6)
             make.height.equalTo(view.frame.size.height/2)
@@ -274,7 +234,6 @@ extension SetNewPasswordVC {
         } else {
             passwordAgainView.keyboardWillShow()
         }
-        moveViewWithKeyboard(notification: notification, keyboardWillShow: true)
         
     }
     
@@ -293,7 +252,6 @@ extension SetNewPasswordVC {
                 passwordAgainView.keyboardWillHide()
             }
         }
-        moveViewWithKeyboard(notification: notification, keyboardWillShow: false)
     }
     
     

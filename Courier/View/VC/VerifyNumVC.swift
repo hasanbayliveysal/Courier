@@ -37,9 +37,6 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
     //MARK: -- FUNCTIONS
 
     override func viewDidLoad() {
-        let nc = NotificationCenter.default
-//        nc.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-//        nc.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         super.viewDidLoad()
         self.title = "Courier"
         view.backgroundColor = .white
@@ -48,18 +45,7 @@ class VerifyNumVC: BaseVC<VerifyNumVM> {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "❮", style: .plain, target: self, action: #selector(onTapBack))
         
     }
-    
-//    @objc func appMovedToBackground() {
-//        print("background")
-//    }
-//
-//
-//    @objc func appMovedToForeground() {
-//        print("Foreground")
-//    }
-//
-//
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        

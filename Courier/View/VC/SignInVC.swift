@@ -273,49 +273,63 @@ extension SignInVC {
     
     @objc func onTapSignIn() {
         let signUpVM = SignUpVM()
-        let errors = ["Password":"Check your password and try again", "Number":"You have not an account please Sign up"]
-        if passwordView.tf.text != "" && phoneNumView.phoneTextField.text != "" {
-            var userValidation : [Bool] = []
-            vm.getUserInfo().then { result in
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        for info in data {
-                            if let number = self.phoneNumView.phoneTextField.text {
-                                if info.phoneNum == "+994\(number)" && info.password == self.passwordView.tf.text {
-                                    userValidation.append(true)
-                                    break
+        if let userNum = phoneNumView.phoneTextField.text {
+            if userNum != "" {
+                if !phoneNumView.checkIsNum(userNum) {
+                    makeAlertForWrongCode(with: "Enter Valid Phone Number")
+                } else {
+                    if let userPassword = passwordView.tf.text {
+                        var userValidation : [Bool] = []
+                        var userIsCorrect : [Bool] = []
+                        var userNot : [Bool] = []
+                        vm.getUserInfo().then { result in
+                            switch result {
+                            case .success(let data):
+                                DispatchQueue.main.async {
+                                    for info in data {
+                                            if info.phoneNum == "+994\(userNum)" && info.password == userPassword {
+                                                userIsCorrect.append(true)
+                                                
+                                                break
+                                            }else if info.phoneNum == "+994\(userNum)" && info.password != userPassword{
+                                                userValidation.append(true)
+                                            }else if info.phoneNum != "+994\(userNum)"{
+                                                userNot.append(true)
+                                            }
+                                    }
+                                    if userValidation.contains(true){
+                                        self.makeAlertForWrongCode(with: "Password is not correct")
+                                    }
+                                    else if userNot.contains(false){
+                                        self.makeAlertForWrongCode(with: "You have not an account, please sign up")
+                                    }else
+                                    if userIsCorrect.contains(true) {
+                                        if self.vm.afterSetPassword {
+                                            self.navigationController?.viewControllers = [TabBar()]
+                                        } else{
+                                            let num = "+994\(userNum)"
+                                            signUpVM.issignUp(with: num).then({ result in
+                                                switch result {
+                                                case .success():
+                                                    self.navigationController?.viewControllers = [self.router.verifyNumVC(num: num, userDef: true,true,false)]
+                                                case .failure(let err):
+                                                    self.makeAlertForWrongCode(with: err.localizedDescription)
+                                                   }
+                                                 })
+                                               
+                                             }
+                                           }
                                 }
+                            case .failure(let err):
+                                self.makeAlertForWrongCode(with: err.localizedDescription)
                             }
                         }
-                        if userValidation.contains(true) {
-                            if self.vm.afterSetPassword {
-                                self.navigationController?.viewControllers = [TabBar()]
-                            } else{
-                            if var num = self.phoneNumView.phoneTextField.text {
-                                num = "+994\(num)"
-                                signUpVM.issignUp(with: num).then({ result in
-                                    switch result {
-                                    case .success():
-                                        self.navigationController?.viewControllers = [self.router.verifyNumVC(num: num, userDef: true,true,false)]
-                                    case .failure(let err):
-                                        self.makeAlertForWrongCode(with: err.localizedDescription)
-                                       }
-                                     })
-                                   }
-                                 }
-                               }
-                        else {
-                            self.makeAlertForWrongCode(with: "Check your phone number or password and try again")
-                        }
                     }
-                case .failure(let err):
-                    self.makeAlertForWrongCode(with: err.localizedDescription)
                 }
             }
-        } else {
-            makeAlertForWrongCode(with: "Enter Valid Phone Number and Password")
+            else  {
+                self.makeAlertForWrongCode(with: "Fields can not be empty")
+            }
         }
-        
     }
 }

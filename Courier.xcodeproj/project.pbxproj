@@ -10,6 +10,19 @@
 		D19456842A01558100A046A2 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19456832A01558000A046A2 /* OTPTextField.swift */; };
 		D19456862A01B90000A046A2 /* CreatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19456852A01B90000A046A2 /* CreatePasswordVC.swift */; };
 		D19456882A01B92B00A046A2 /* CreatePasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19456872A01B92B00A046A2 /* CreatePasswordVM.swift */; };
+		D19D650A2A125D51000A1D4C /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65092A125D51000A1D4C /* DeliveryModel.swift */; };
+		D19D650C2A1267D3000A1D4C /* ProductInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D650B2A1267D3000A1D4C /* ProductInformationVC.swift */; };
+		D19D650E2A126805000A1D4C /* ProductAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D650D2A126805000A1D4C /* ProductAddressVC.swift */; };
+		D19D65102A126832000A1D4C /* ConfirmDeliveryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D650F2A126832000A1D4C /* ConfirmDeliveryVC.swift */; };
+		D19D65122A12684F000A1D4C /* ConfirmDeliveryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65112A12684F000A1D4C /* ConfirmDeliveryVM.swift */; };
+		D19D65142A126874000A1D4C /* ProductAddressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65132A126874000A1D4C /* ProductAddressVM.swift */; };
+		D19D65162A12688E000A1D4C /* ProductInformationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65152A12688E000A1D4C /* ProductInformationVM.swift */; };
+		D19D65182A12CBC4000A1D4C /* ProductInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65172A12CBC4000A1D4C /* ProductInformationView.swift */; };
+		D19D651A2A1C9194000A1D4C /* ProductAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65192A1C9194000A1D4C /* ProductAddressView.swift */; };
+		D19D651D2A1CADBC000A1D4C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D19D651C2A1CADBC000A1D4C /* RxCocoa */; };
+		D19D651F2A1CADBC000A1D4C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D19D651E2A1CADBC000A1D4C /* RxSwift */; };
+		D19D65212A1CAE1D000A1D4C /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65202A1CAE1D000A1D4C /* OrdersView.swift */; };
+		D19D65252A1CAEE1000A1D4C /* OrdersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D65242A1CAEE1000A1D4C /* OrdersVM.swift */; };
 		D1A58A4F29FEE81E00BE9C78 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1A58A4E29FEE81E00BE9C78 /* Launch Screen.storyboard */; };
 		D1A58A5329FEEC8100BE9C78 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A5229FEEC8100BE9C78 /* Router.swift */; };
 		D1A58A5729FEEEC000BE9C78 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A58A5629FEEEC000BE9C78 /* BaseVC.swift */; };
@@ -60,6 +73,17 @@
 		D19456832A01558000A046A2 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		D19456852A01B90000A046A2 /* CreatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordVC.swift; sourceTree = "<group>"; };
 		D19456872A01B92B00A046A2 /* CreatePasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordVM.swift; sourceTree = "<group>"; };
+		D19D65092A125D51000A1D4C /* DeliveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
+		D19D650B2A1267D3000A1D4C /* ProductInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInformationVC.swift; sourceTree = "<group>"; };
+		D19D650D2A126805000A1D4C /* ProductAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddressVC.swift; sourceTree = "<group>"; };
+		D19D650F2A126832000A1D4C /* ConfirmDeliveryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeliveryVC.swift; sourceTree = "<group>"; };
+		D19D65112A12684F000A1D4C /* ConfirmDeliveryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeliveryVM.swift; sourceTree = "<group>"; };
+		D19D65132A126874000A1D4C /* ProductAddressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddressVM.swift; sourceTree = "<group>"; };
+		D19D65152A12688E000A1D4C /* ProductInformationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInformationVM.swift; sourceTree = "<group>"; };
+		D19D65172A12CBC4000A1D4C /* ProductInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInformationView.swift; sourceTree = "<group>"; };
+		D19D65192A1C9194000A1D4C /* ProductAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddressView.swift; sourceTree = "<group>"; };
+		D19D65202A1CAE1D000A1D4C /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		D19D65242A1CAEE1000A1D4C /* OrdersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVM.swift; sourceTree = "<group>"; };
 		D1A58A4E29FEE81E00BE9C78 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D1A58A5229FEEC8100BE9C78 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D1A58A5629FEEEC000BE9C78 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -108,11 +132,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D19D651D2A1CADBC000A1D4C /* RxCocoa in Frameworks */,
 				D1A58A6A29FF089C00BE9C78 /* Promises in Frameworks */,
 				D1A58A752A00083D00BE9C78 /* FirebaseFirestore in Frameworks */,
 				D1A58A732A00083D00BE9C78 /* FirebaseAuth in Frameworks */,
 				D1A58A772A00083D00BE9C78 /* FirebaseStorage in Frameworks */,
 				D1A58A6329FEF59900BE9C78 /* SnapKit in Frameworks */,
+				D19D651F2A1CADBC000A1D4C /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,11 +165,13 @@
 				D1CA65212A06AC6100A9B6CB /* ForgotPasswordVC.swift */,
 				D1CA65232A06AC8000A9B6CB /* SetNewPasswordVC.swift */,
 				D1CA65102A0691E500A9B6CB /* DeliveriesVC.swift */,
-				D1CA650E2A06913600A9B6CB /* TabBar.swift */,
-				D1CA64FE2A06239000A9B6CB /* TermsAndConditionsVC.swift */,
+				D19D650B2A1267D3000A1D4C /* ProductInformationVC.swift */,
+				D19D650D2A126805000A1D4C /* ProductAddressVC.swift */,
+				D19D650F2A126832000A1D4C /* ConfirmDeliveryVC.swift */,
 				D1CA65142A06A4C800A9B6CB /* AddressesVC.swift */,
 				D1CA65162A06A4DD00A9B6CB /* NotificationsVC.swift */,
 				D1CA65182A06A4EE00A9B6CB /* MoreVC.swift */,
+				D1CA64FE2A06239000A9B6CB /* TermsAndConditionsVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -156,6 +184,9 @@
 				D1DF347F2A03C00900A6F636 /* OTPView.swift */,
 				D1DF34832A04073900A6F636 /* PasswordView.swift */,
 				D1CA650C2A0676AB00A9B6CB /* PhoneNum.swift */,
+				D19D65172A12CBC4000A1D4C /* ProductInformationView.swift */,
+				D19D65192A1C9194000A1D4C /* ProductAddressView.swift */,
+				D19D65202A1CAE1D000A1D4C /* OrdersView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +205,10 @@
 				D1CA651E2A06A54300A9B6CB /* MoreVM.swift */,
 				D1CA65252A06AC9300A9B6CB /* ForgotPasswordVM.swift */,
 				D1CA65272A06ACB600A9B6CB /* SetNewPasswordVM.swift */,
+				D19D65112A12684F000A1D4C /* ConfirmDeliveryVM.swift */,
+				D19D65132A126874000A1D4C /* ProductAddressVM.swift */,
+				D19D65152A12688E000A1D4C /* ProductInformationVM.swift */,
+				D19D65242A1CAEE1000A1D4C /* OrdersVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -182,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				D1CA650A2A06550900A9B6CB /* UserModel.swift */,
+				D19D65092A125D51000A1D4C /* DeliveryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +258,7 @@
 				D1A58A5229FEEC8100BE9C78 /* Router.swift */,
 				D1B3A90429FED80700A0F61A /* AppDelegate.swift */,
 				D1A58A5629FEEEC000BE9C78 /* BaseVC.swift */,
+				D1CA650E2A06913600A9B6CB /* TabBar.swift */,
 				D1B3A91029FED80900A0F61A /* Assets.xcassets */,
 				D1B3A91529FED80900A0F61A /* Info.plist */,
 				D1B3A90D29FED80700A0F61A /* Courier.xcdatamodeld */,
@@ -263,6 +300,8 @@
 				D1A58A722A00083D00BE9C78 /* FirebaseAuth */,
 				D1A58A742A00083D00BE9C78 /* FirebaseFirestore */,
 				D1A58A762A00083D00BE9C78 /* FirebaseStorage */,
+				D19D651C2A1CADBC000A1D4C /* RxCocoa */,
+				D19D651E2A1CADBC000A1D4C /* RxSwift */,
 			);
 			productName = Courier;
 			productReference = D1B3A90129FED80700A0F61A /* Courier.app */;
@@ -296,6 +335,7 @@
 				D1A58A6129FEF59900BE9C78 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D1A58A6829FF089C00BE9C78 /* XCRemoteSwiftPackageReference "promises" */,
 				D1A58A712A00083D00BE9C78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D19D651B2A1CADBC000A1D4C /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = D1B3A90229FED80700A0F61A /* Products */;
 			projectDirPath = "";
@@ -326,24 +366,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19456842A01558100A046A2 /* OTPTextField.swift in Sources */,
+				D19D65102A126832000A1D4C /* ConfirmDeliveryVC.swift in Sources */,
 				D1CA65172A06A4DD00A9B6CB /* NotificationsVC.swift in Sources */,
+				D19D65142A126874000A1D4C /* ProductAddressVM.swift in Sources */,
 				D1DF347C2A0382AA00A6F636 /* InformationView.swift in Sources */,
+				D19D65212A1CAE1D000A1D4C /* OrdersView.swift in Sources */,
 				D1A58A6E2A0001B700BE9C78 /* VerifyNumVC.swift in Sources */,
 				D1A58A6529FF081500BE9C78 /* SignUpVC.swift in Sources */,
+				D19D650C2A1267D3000A1D4C /* ProductInformationVC.swift in Sources */,
+				D19D650A2A125D51000A1D4C /* DeliveryModel.swift in Sources */,
 				D19456862A01B90000A046A2 /* CreatePasswordVC.swift in Sources */,
 				D19456882A01B92B00A046A2 /* CreatePasswordVM.swift in Sources */,
 				D1A58A5329FEEC8100BE9C78 /* Router.swift in Sources */,
 				D1A58A7C2A000AB200BE9C78 /* AuthService.swift in Sources */,
 				D1CA65192A06A4EE00A9B6CB /* MoreVC.swift in Sources */,
 				D1A58A6729FF082900BE9C78 /* SignUpVM.swift in Sources */,
+				D19D65182A12CBC4000A1D4C /* ProductInformationView.swift in Sources */,
+				D19D65252A1CAEE1000A1D4C /* OrdersVM.swift in Sources */,
 				D1CA650F2A06913600A9B6CB /* TabBar.swift in Sources */,
 				D1A58A702A0001D300BE9C78 /* VerifyNumVM.swift in Sources */,
 				D1CA651B2A06A50A00A9B6CB /* AddressesVM.swift in Sources */,
 				D1CA650B2A06550900A9B6CB /* UserModel.swift in Sources */,
 				D1CA65242A06AC8000A9B6CB /* SetNewPasswordVC.swift in Sources */,
+				D19D650E2A126805000A1D4C /* ProductAddressVC.swift in Sources */,
+				D19D651A2A1C9194000A1D4C /* ProductAddressView.swift in Sources */,
 				D1CA65132A06920500A9B6CB /* DeliveriesVM.swift in Sources */,
 				D1A58A5929FEEFD400BE9C78 /* WelcomeVM.swift in Sources */,
 				D1CA651D2A06A52F00A9B6CB /* NotificationsVM.swift in Sources */,
+				D19D65122A12684F000A1D4C /* ConfirmDeliveryVM.swift in Sources */,
 				D1A58A6C29FF3BB900BE9C78 /* SDCTextField.swift in Sources */,
 				D1CA64FF2A06239000A9B6CB /* TermsAndConditionsVC.swift in Sources */,
 				D1B3A90929FED80700A0F61A /* WelcomeVC.swift in Sources */,
@@ -362,6 +412,7 @@
 				D1DF347E2A038C1800A6F636 /* EnterPhoneNumberView.swift in Sources */,
 				D1B3A90529FED80700A0F61A /* AppDelegate.swift in Sources */,
 				D1CA65112A0691E500A9B6CB /* DeliveriesVC.swift in Sources */,
+				D19D65162A12688E000A1D4C /* ProductInformationVM.swift in Sources */,
 				D1A58A5729FEEEC000BE9C78 /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +625,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D19D651B2A1CADBC000A1D4C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		D1A58A6129FEF59900BE9C78 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -601,6 +660,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D19D651C2A1CADBC000A1D4C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D19D651B2A1CADBC000A1D4C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		D19D651E2A1CADBC000A1D4C /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D19D651B2A1CADBC000A1D4C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		D1A58A6229FEF59900BE9C78 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D1A58A6129FEF59900BE9C78 /* XCRemoteSwiftPackageReference "SnapKit" */;
